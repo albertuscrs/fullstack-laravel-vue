@@ -2627,7 +2627,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 if (res.status === 200) {
                   _this3.tags.splice(_this3.deletingIndex, 1);
 
-                  _this3.s('Tag has been deleted successfully!');
+                  _this3.s('User has been deleted successfully!');
                 } else {
                   _this3.swr();
                 }
@@ -4597,7 +4597,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 res = _context.sent;
 
                 if (res.status === 201) {
-                  _this.tags.unshift(res.data);
+                  _this.roles.unshift(res.data);
 
                   _this.s('Role has been added successfully!');
 
@@ -4688,7 +4688,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
               case 0:
                 _this3.isDeleing = true;
                 _context3.next = 3;
-                return _this3.callApi('post', 'app/delete_tag', _this3.deleteItem);
+                return _this3.callApi('post', 'app/delete_role', _this3.deleteItem);
 
               case 3:
                 res = _context3.sent;
@@ -4696,7 +4696,7 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
                 if (res.status === 200) {
                   _this3.tags.splice(_this3.deletingIndex, 1);
 
-                  _this3.s('Tag has been deleted successfully!');
+                  _this3.s('Role has been deleted successfully!');
                 } else {
                   _this3.swr();
                 }
@@ -4712,18 +4712,19 @@ function _asyncToGenerator(fn) { return function () { var self = this, args = ar
         }, _callee3);
       }))();
     },
-    showDeletingModal: function showDeletingModal(tag, i) {
+    showDeletingModal: function showDeletingModal(role, i) {
       var deleteModalObj = {
         showDeleteModal: true,
-        deleteUrl: 'app/delete_tag',
-        data: tag,
+        deleteUrl: 'app/delete_role',
+        data: role,
         deletingIndex: i,
         isDeleted: false
       };
       this.$store.commit('setDeletingModalObj', deleteModalObj);
-      console.log('delete method called'); // this.deleteItem = tag
-      // this.deletingIndex = i
-      // this.showDeleteModal = true
+      console.log('delete method called');
+      this.deleteItem = role;
+      this.deletingIndex = i;
+      this.showDeleteModal = true;
     }
   },
   created: function created() {
@@ -71237,7 +71238,7 @@ var render = function() {
                 "p",
                 { staticClass: "_title0" },
                 [
-                  _vm._v("Tags "),
+                  _vm._v("Users "),
                   _c(
                     "Button",
                     {
@@ -92125,7 +92126,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _admin_pages_createBlog__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./admin/pages/createBlog */ "./resources/js/admin/pages/createBlog.vue");
 /* harmony import */ var _admin_pages_blogs__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./admin/pages/blogs */ "./resources/js/admin/pages/blogs.vue");
 /* harmony import */ var _admin_pages_editblog__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./admin/pages/editblog */ "./resources/js/admin/pages/editblog.vue");
-/* harmony import */ var _admin_pages_notfound__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./admin/pages/notfound */ "./resources/js/admin/pages/notfound.vue");
+/* harmony import */ var _admin_pages_notfound__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./admin/pages/notfound */ "./resources/js/admin/pages/notfound.vue");
 
 
 vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
@@ -92176,7 +92177,7 @@ var routes = [//projects routes....
   name: 'editblog'
 }, {
   path: '*',
-  component: _admin_pages_notfound__WEBPACK_IMPORTED_MODULE_18__["default"],
+  component: _admin_pages_notfound__WEBPACK_IMPORTED_MODULE_17__["default"],
   name: 'notfound'
 }, {
   path: '/adminusers',
@@ -92528,7 +92529,7 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(/*! /Users/mdzainalabedin/laravel/fullstack/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! D:\xampp\htdocs\fullstack-laravel-vue\resources\js\app.js */"./resources/js/app.js");
 
 
 /***/ })

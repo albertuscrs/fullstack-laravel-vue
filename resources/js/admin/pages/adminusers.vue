@@ -5,7 +5,7 @@
 				
 				<!--~~~~~~~ TABLE ONE ~~~~~~~~~-->
 				<div class="_1adminOverveiw_table_recent _box_shadow _border_radious _mar_b30 _p20">
-					<p class="_title0">Tags <Button @click="addModal=true"><Icon type="md-add" /> Add admin</Button></p>
+					<p class="_title0">Users <Button @click="addModal=true"><Icon type="md-add" /> Add admin</Button></p>
 
 					<div class="_overflow _table_div">
 						<table class="_table">
@@ -223,7 +223,7 @@ export default {
 			const res = await this.callApi('post', 'app/delete_tag', this.deleteItem)
 			if(res.status===200){
 				this.tags.splice(this.deletingIndex,1)
-				this.s('Tag has been deleted successfully!')
+				this.s('User has been deleted successfully!')
 			}else{
 				this.swr()
 			}

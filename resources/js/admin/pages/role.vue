@@ -68,19 +68,19 @@
 
 				</Modal>
 				<!-- delete alert modal -->
-				<!-- <Modal v-model="showDeleteModal" width="360">
+				<!--<Modal v-model="showDeleteModal" width="360">
 					<p slot="header" style="color:#f60;text-align:center">
 						<Icon type="ios-information-circle"></Icon>
 						<span>Delete confirmation</span>
 					</p>
 					<div style="text-align:center">
-						<p>Are you sure you want to delete tag?.</p>
+						<p>Are you sure you want to delete Role?.</p>
 						
 					</div>
 					<div slot="footer">
-						<Button type="error" size="large" long :loading="isDeleing" :disabled="isDeleing" @click="deleteTag" >Delete</Button>
+						<Button type="error" size="large" long :loading="isDeleing" :disabled="isDeleing" @click="deleteRole" >Delete</Button>
 					</div>
-				</Modal> -->
+				</Modal>  -->
 				<deleteModal></deleteModal>
 
 			</div>
@@ -120,7 +120,7 @@ export default {
 			if(this.data.roleName.trim()=='') return this.e('Role name is required')
 			const res = await this.callApi('post', 'app/create_role', this.data)
 			if(res.status===201){
-				this.tags.unshift(res.data)
+				this.roles.unshift(res.data)
 				this.s('Role has been added successfully!')
 				this.addModal = false
 				this.data.roleName = ''
@@ -169,10 +169,10 @@ export default {
 		}, 
 		async deleteTag(){
 			this.isDeleing = true
-			const res = await this.callApi('post', 'app/delete_tag', this.deleteItem)
+			const res = await this.callApi('post', 'app/delete_role', this.deleteItem)
 			if(res.status===200){
 				this.tags.splice(this.deletingIndex,1)
-				this.s('Tag has been deleted successfully!')
+				this.s('Role has been deleted successfully!')
 			}else{
 				this.swr()
 			}
@@ -180,19 +180,19 @@ export default {
 			this.showDeleteModal = false
 
 		}, 
-		showDeletingModal(tag, i){
+		showDeletingModal(role, i){
 			const deleteModalObj  =  {
 				showDeleteModal: true, 
-				deleteUrl : 'app/delete_tag', 
-				data : tag, 
+				deleteUrl : 'app/delete_role', 
+				data : role, 
 				deletingIndex: i, 
 				isDeleted : false,
 			}
 			this.$store.commit('setDeletingModalObj', deleteModalObj)
 			console.log('delete method called')
-			// this.deleteItem = tag
-			// this.deletingIndex = i
-			// this.showDeleteModal = true
+			this.deleteItem = role
+			this.deletingIndex = i
+			this.showDeleteModal = true
 
 		}
 	}, 

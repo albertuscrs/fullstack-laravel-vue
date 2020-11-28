@@ -239,16 +239,18 @@ class AdminController extends Controller
             if ($user->role->isAdmin == 0) {
                 Auth::logout();
                 return response()->json([
-                    'msg' => 'Incorrect login details',
+                    'msg' => 'Bukan admin',
                 ], 401);
             }
-            return response()->json([
-                'msg' => 'You are logged in',
-                'user' => $user,
-            ]);
+            else {
+                return response()->json([
+                    'msg' => 'You are logged in',
+                    'user' => $user,
+                    ]);
+            }
         } else {
             return response()->json([
-                'msg' => 'Incorrect login details',
+                'msg' => 'Salah pass/email',
             ], 401);
         }
     }
@@ -286,6 +288,14 @@ class AdminController extends Controller
         return Role::where('id', $request->id)->update([
             'permission' => $request->permission,
         ]);
+    }
+    public function deleteRole(Request $req){
+        // validate request
+        $this->validate($req, [
+            'id' => 'required',
+        ]);
+        // User::where()
+        return Role::where('id', $req->id)->delete();
     }
 
     public function slug()
